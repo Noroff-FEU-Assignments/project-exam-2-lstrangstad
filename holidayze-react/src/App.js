@@ -7,6 +7,9 @@ import Login from "./pages/Login";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import Contact from "./pages/Contact";
+import Admin from "./pages/Admin";
+import Add from "./pages/Add";
+import Details from "./pages/Details";
 
 function App() {
   return (
@@ -15,9 +18,12 @@ function App() {
         <Nav />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/stays" exact component={Stays} />
-          <Route path="/contact" exact component={Contact} />
-          <Route path="/login" exact component={Login} />
+          <Route path="/stays" component={Stays} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/login" component={Login} />
+          <Route path="/admin" component={Admin} />
+          <Route path="/add" component={Add} />
+          <Route path="/details/:id" component={Details} />
         </Switch>
         <Footer />
       </Router>
