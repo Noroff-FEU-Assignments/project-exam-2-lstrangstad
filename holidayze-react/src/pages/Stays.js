@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
+import Card from "../components/Card";
 
 const Stays = () => {
   const [hotels, setHotels] = useState([]);
@@ -20,7 +21,11 @@ const Stays = () => {
   return (
     <div className="stays">
       <h1>Our hotels</h1>
-      <div></div>
+      <div>
+        {hotels.map((hotel) => {
+          return <Card key={hotel.id} {...hotel} />;
+        })}
+      </div>
     </div>
   );
 };
