@@ -12,33 +12,38 @@ const Nav = () => {
   };
 
   return (
-    <nav>
-      <div>
-        <li>
+    <nav className="nav">
+      <div className="nav__logo">
+        <strong className="nav__logo-txt">
+          Holi<span className="nav__logo-contrast">daze</span>
+        </strong>
+      </div>
+      <div className="nav__navigation">
+        <li className="nav__list">
           <Link to="/">Home</Link>
         </li>
-        <li>
+        <li className="nav__list">
           <Link to="/stays">Stays</Link>
         </li>
-        <li>
+        <li className="nav__list">
           <Link to="/contact">Contact</Link>
         </li>
       </div>
       {auth ? (
-        <>
-          <li>
+        <div className="nav__auth">
+          <li className="nav__list">
             <Link to="/admin">Admin</Link>
           </li>
-          <li>
+          <li className="nav__list">
             <Link to="/add">Add establishment</Link>
           </li>
-          <li>
+          <li className="nav__list">
             <button onClick={logout}>Log out</button>
           </li>
-        </>
+        </div>
       ) : (
-        <div>
-          <li>
+        <div className="nav__auth">
+          <li className="nav__list">
             <Link to="/login">Admin login</Link>
           </li>
         </div>
