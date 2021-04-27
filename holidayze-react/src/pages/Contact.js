@@ -1,94 +1,60 @@
 import { useState } from "react";
 import { BASE_URL } from "../utils/constants";
-import { useFormik } from "formik";
-import * as yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { contactSchema } from "../utils/schemas";
 import axios from "axios";
 
 const Contact = () => {
   const [submit, setSubmit] = useState(false);
   const [postError, setPostError] = useState(null);
   const [success, setSuccess] = useState(null);
-
-  const {
-    handleSubmit,
-    handleChange,
-    handleBlur,
-    values,
-    touched,
-    errors,
-  } = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    },
-    contactSchema: yup.object().shape({
-      name: yup.string().required("Please enter name"),
-      email: yup.string().email("Invalid email").required("Please enter email"),
-      subject: yup.string().required("Please enter subject"),
-      message: yup.string().required("Please enter message"),
-    }),
-    onSubmit: async (values) => {
-      setSubmit(true);
-      setPostError(null);
-      console.log(values);
-
-      try {
-        const response = await axios.post(`${BASE_URL}/contacts`, values);
-        console.log(response.data);
-        setSuccess(true);
-      } catch (err) {
-        console.log("error", err);
-      } finally {
-        setSubmit(false);
-      }
-    },
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(contactSchema),
   });
+
+  const onSubmit = async (values) => {
+    setSubmit(true);
+    setPostError(null);
+    console.log(values);
+
+    try {
+      const response = await axios.post(`${BASE_URL}/contacts`, values);
+      console.log(response.data);
+      setSuccess(true);
+    } catch (err) {
+      console.log("error", err);
+    } finally {
+      setSubmit(false);
+    }
+  };
+
   return (
     <div className="contact">
       <h1>Contact us</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        {postError && <p>{postError}</p>}
+        {success ? <p>Message sendt</p> : null}
         <fieldset disabled={submit}>
           <div>
             <label>Name</label>
-            <input
-              value={values.name}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              name="name"
-            />
-            {touched.name && errors.name ? <p>{errors.name}</p> : null}
+            <input name="name" ref={register} />
+            {errors.name && <p>{errors.name.message}</p>}
           </div>
           <div>
             <label>Email</label>
-            <input
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              name="email"
-            />
-            {touched.email && errors.email ? <p>{errors.email}</p> : null}
+            <input name="email" ref={register} />
+            {errors.email && <p>{errors.email.message}</p>}
           </div>
           <div>
             <label>Subject</label>
-            <input
-              value={values.subject}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              name="subject"
-            />
-            {touched.subject && errors.subject ? <p>{errors.subject}</p> : null}
+            <input name="subject" ref={register} />
+            {errors.subject && <p>{errors.subject.message}</p>}
           </div>
           <div>
             <label>Message</label>
-            <textarea
-              value={values.message}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              name="message"
-            />
-            {touched.message && errors.name ? <p>{errors.name}</p> : null}
+            <textarea name="message" ref={register} />
+            {errors.message && <p>{errors.message.message}</p>}
           </div>
           <button className="form__button btn" type="submit">
             {submit ? "Sending.." : "Send"}
