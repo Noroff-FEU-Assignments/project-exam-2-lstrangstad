@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import TwitterIcon from "@material-ui/icons/Twitter";
 
 const Footer = () => {
   return (
@@ -16,13 +19,13 @@ const Footer = () => {
       </div>
       <div>
         <a href="www.facebook.com">
-          <img src="#" alt="" />
+          <FacebookIcon />
         </a>
         <a href="www.twitter.com">
-          <img src="#" alt="" />
+          <TwitterIcon />
         </a>
         <a href="www.instagram.com">
-          <img src="#" alt="" />
+          <InstagramIcon />
         </a>
       </div>
       <div>
