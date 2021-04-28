@@ -75,8 +75,6 @@ export default function SimpleModal() {
   };
 
   const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [nights, setNights] = useState();
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
