@@ -6,30 +6,36 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 const Footer = () => {
   return (
     <div className="footer">
-      <div>
-        <li>
-          <Link to="/">Home</Link>
+      <div className="footer__nav">
+        <li className="footer__list">
+          <Link className="footer__link" to="/">
+            Home
+          </Link>
         </li>
-        <li>
-          <Link to="">Stays</Link>
+        <li className="footer__list">
+          <Link className="footer__link" to="">
+            Stays
+          </Link>
         </li>
-        <li>
-          <Link to="">Contact</Link>
+        <li className="footer__list">
+          <Link className="footer__link" to="">
+            Contact
+          </Link>
         </li>
       </div>
-      <div>
+      <div className="footer__links">
         <a href="www.facebook.com">
-          <FacebookIcon />
+          <FacebookIcon style={{ color: "white" }} />
         </a>
         <a href="www.twitter.com">
-          <TwitterIcon />
+          <TwitterIcon style={{ color: "white" }} />
         </a>
         <a href="www.instagram.com">
-          <InstagramIcon />
+          <InstagramIcon style={{ color: "white" }} />
         </a>
       </div>
-      <div>
-        <p>Copyright Linus Strangstad</p>
+      <div className="footer__bottom">
+        <p className="footer__copy">Copyright Linus Strangstad</p>
       </div>
     </div>
   );
