@@ -20,7 +20,7 @@ const Details = () => {
   return (
     <div>
       <div>
-        <img src="" alt="" />
+        <img src={hotel.image} alt="" />
       </div>
       <div>
         <h1>{hotel.name}</h1>
