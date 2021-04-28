@@ -4,7 +4,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Home from "./pages/Home";
 import Stays from "./pages/Stays";
 import Login from "./pages/Login";
-import Nav from "./components/Nav";
+import Nav from "./components/nav/Nav";
 import Footer from "./components/Footer";
 import Contact from "./pages/Contact";
 import Admin from "./pages/Admin";
