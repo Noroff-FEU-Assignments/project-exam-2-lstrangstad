@@ -29,29 +29,34 @@ const Home = () => {
     setFilter(filteredHotels);
     setIsFiltered(true);
 
-    if (e.target.value === "") {
+    if (e.target.value === "" || filteredHotels.length === 0) {
       setToggle("closed");
     } else {
       setToggle("toggled");
     }
   };
 
+  console.log(filter);
+
   return (
     <div className="home">
-      <div>
-        <h1>Find your accommodation in Bergen now</h1>
+      <div className="home__headingbox">
+        <h1 className="home__heading">
+          Find your accommodation in Bergen now!
+        </h1>
       </div>
       <div>
-        <h2>Search Hotel</h2>
-        <input type="text" onChange={handleFilter} />
-        <div className={toggle}>
+        <h2 className="home__subheader">Search Hotel</h2>
+        <input className="home__input" type="text" onChange={handleFilter} />
+        <div className="home__toggle" className={toggle}>
           {isFiltered ? (
-            <div>
-              <ul>
+            <div className="home__toggleInner">
+              <ul className="home__list">
                 {filter?.map((hotel) => {
                   return (
-                    <li key={hotel.id}>
+                    <li className="home__item" key={hotel.id}>
                       <Link
+                        className="home__link"
                         style={{ display: "flex" }}
                         to={`/details/${hotel.id}`}
                       >
