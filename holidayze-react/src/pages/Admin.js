@@ -60,7 +60,7 @@ const Admin = () => {
         <h2>Last Contact message:</h2>
         {message.map((msg) => {
           return (
-            <div>
+            <div key={msg.id}>
               <p>Created at: {msg.created_at}</p>
               <p>Name: {msg.name}</p>
               <p>Email: {msg.email}</p>
