@@ -20,12 +20,12 @@ const Stays = () => {
   console.log(hotels);
   return (
     <div className="stays">
-      <h1>Our hotels</h1>
-      <div>
+      <h1 className="stays__header">Our hotels</h1>
+      <>
         {hotels.map((hotel) => {
           return <Card key={hotel.id} {...hotel} />;
         })}
-      </div>
+      </>
     </div>
   );
 };
