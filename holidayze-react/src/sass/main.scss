@@ -3,6 +3,9 @@
 
 // Pages
 @use "./pages/home";
+@use "./pages/stays";
 
 // Components
 @use "./components/nav";
+@use "./components/footer";
+@use "./components/card";

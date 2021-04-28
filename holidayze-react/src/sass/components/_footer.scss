@@ -1,0 +1,35 @@
+.footer {
+  background-color: #23283e;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+
+  &__nav {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: white;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    letter-spacing: 1.1px;
+  }
+}

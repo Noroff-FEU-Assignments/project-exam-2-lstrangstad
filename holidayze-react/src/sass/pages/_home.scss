@@ -1,0 +1,56 @@
+.closed {
+  display: none;
+}
+
+.toggled {
+  display: block;
+}
+
+.home {
+  padding: 20px;
+  background-image: url("../../images/bergen-bryggen.jpg");
+  height: 80vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &__headingbox {
+    max-width: 250px;
+    margin: 20px 0;
+  }
+
+  &__subheader {
+    font-size: 16px;
+    padding-left: 5px;
+    padding-top: 20px;
+    color: rgb(252, 252, 252);
+  }
+
+  &__input {
+    width: 250px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid;
+  }
+
+  &__toggleInner {
+    background-color: #fff;
+    max-width: 250px;
+    border-radius: 0 0 5px 5px;
+    padding: 5px;
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    padding: 10px 0;
+    //border-bottom: 1px solid;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: black;
+  }
+}
