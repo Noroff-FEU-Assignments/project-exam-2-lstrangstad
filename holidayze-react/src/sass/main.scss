@@ -4,8 +4,12 @@
 // Pages
 @use "./pages/home";
 @use "./pages/stays";
+@use "./pages/details";
+@use "./pages/contact";
+@use "./pages/login";
 
 // Components
 @use "./components/nav";
 @use "./components/footer";
 @use "./components/card";
+@use "./components/modal";

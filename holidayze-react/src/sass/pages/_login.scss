@@ -1,0 +1,31 @@
+.login {
+  padding: 20px;
+  min-height: 80vh;
+
+  &__heading {
+    padding-bottom: 20px;
+  }
+
+  &__field {
+    border: none;
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+  }
+
+  &__label {
+    font-size: 14px;
+  }
+
+  &__button {
+    padding: 5px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(5, 160, 5);
+    color: white;
+  }
+}

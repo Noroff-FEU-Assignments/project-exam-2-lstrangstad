@@ -5,3 +5,12 @@
     margin-bottom: 20px;
   }
 }
+
+.show {
+  display: flex;
+  place-content: center;
+}
+
+.hide {
+  display: none;
+}
