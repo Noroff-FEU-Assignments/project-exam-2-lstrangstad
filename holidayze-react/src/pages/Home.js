@@ -48,7 +48,7 @@ const Home = () => {
       <div>
         <h2 className="home__subheader">Search Hotel</h2>
         <input className="home__input" type="text" onChange={handleFilter} />
-        <div className="home__toggle" className={toggle}>
+        <div className={toggle}>
           {isFiltered ? (
             <div className="home__toggleInner">
               <ul className="home__list">
