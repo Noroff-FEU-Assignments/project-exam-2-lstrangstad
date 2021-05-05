@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
-import axios from "axios";
 import useAxios from "../utils/useAxios";
 
 const Admin = () => {
@@ -33,6 +32,7 @@ const Admin = () => {
     };
     fetchMessages();
     console.log(message);
+    console.log(enquiries);
   }, []);
 
   return (
@@ -45,13 +45,12 @@ const Admin = () => {
         {enquiries.map((enquiry) => {
           return (
             <div key={enquiry.id}>
-              <p>Created at: {enquiry.created_at}</p>
+              <p>Created at: {new Date(enquiry.created_at).toString()}</p>
               <p>Name: {enquiry.name}</p>
-              <p>email: {enquiry.mail}</p>
               <p>Check-in date: {enquiry.date}</p>
               <p>nights: {enquiry.nights}</p>
-              <p>Adults: </p>
-              <p>Children:</p>
+              <p>Adults: {enquiry.adults}</p>
+              <p>Children: {enquiry.children}</p>
             </div>
           );
         })}
@@ -61,7 +60,7 @@ const Admin = () => {
         {message.map((msg) => {
           return (
             <div key={msg.id}>
-              <p>Created at: {msg.created_at}</p>
+              <p>Created at: {new Date(msg.created_at).toString()}</p>
               <p>Name: {msg.name}</p>
               <p>Email: {msg.email}</p>
               <p>Subject: {msg.subject}</p>
