@@ -1,6 +1,8 @@
 @use "../mixin";
 
 .details {
+  min-height: 80vh;
+
   &__content {
     padding: 20px 20px;
     border-bottom: 1px solid;

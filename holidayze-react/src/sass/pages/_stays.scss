@@ -1,16 +1,8 @@
 .stays {
   padding: 20px;
+  min-height: 80vh;
 
   &__header {
     margin-bottom: 20px;
   }
-}
-
-.show {
-  display: flex;
-  place-content: center;
-}
-
-.hide {
-  display: none;
 }
