@@ -11,6 +11,7 @@ const Login = () => {
   const [loginError, setLoginError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [, setAuth] = useContext(AuthContext);
+  const history = useHistory();
 
   const {
     handleSubmit,
@@ -38,6 +39,9 @@ const Login = () => {
         console.log(response.data);
         setAuth(response.data);
         setSuccess(true);
+        if (response.status === 200) {
+          history.push("/admin");
+        }
       } catch (err) {
         console.log("error", err);
         setLoginError(err.toString());
@@ -48,17 +52,19 @@ const Login = () => {
   });
 
   return (
-    <div>
-      <h1>Admin login</h1>
+    <div className="login">
+      <h1 className="login__heading">Admin login</h1>
       <div>
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="login__form" onSubmit={handleSubmit}>
           {loginError && <p>{loginError}</p>}
-          <fieldset className="form__fieldset" disabled={submit}>
+          <fieldset className="login__field" disabled={submit}>
             {success ? (
-              <p className="form__success">Successfully logged in</p>
+              <p className="login__success">Successfully logged in</p>
             ) : null}
-            <div className="form__box">
+            <div className="login__box">
+              <label className="login__label">Username/Email</label>
               <input
+                className="login__input"
                 value={values.identifier}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -70,8 +76,10 @@ const Login = () => {
               ) : null}
             </div>
 
-            <div className="form__box">
+            <div className="login__box">
+              <label className="login__label">Password</label>
               <input
+                className="login__input"
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -83,7 +91,7 @@ const Login = () => {
                 <div>{errors.password}</div>
               ) : null}
             </div>
-            <button className="form__button btn" type="submit">
+            <button className="login__button btn" type="submit">
               {submit ? "Loggin in..." : "Login"}
             </button>
           </fieldset>

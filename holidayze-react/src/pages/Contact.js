@@ -31,32 +31,37 @@ const Contact = () => {
 
   return (
     <div className="contact">
-      <h1>Contact us</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <h1 className="contact__heading">Contact us</h1>
+      <form className="contact__form" onSubmit={handleSubmit(onSubmit)}>
         {postError && <p>{postError}</p>}
         {success ? <p>Message sendt</p> : null}
-        <fieldset disabled={submit}>
-          <div>
-            <label>Name</label>
-            <input name="name" ref={register} />
+        <fieldset className="contact__field" disabled={submit}>
+          <div className="contact__input-box">
+            <label className="contact__label">Name: </label>
+            <input className="contact__input" name="name" ref={register} />
             {errors.name && <p>{errors.name.message}</p>}
           </div>
-          <div>
-            <label>Email</label>
-            <input name="email" ref={register} />
+          <div className="contact__input-box">
+            <label className="contact__label">Email: </label>
+            <input className="contact__input" name="email" ref={register} />
             {errors.email && <p>{errors.email.message}</p>}
           </div>
-          <div>
-            <label>Subject</label>
-            <input name="subject" ref={register} />
+          <div className="contact__input-box">
+            <label className="contact__label">Subject: </label>
+            <input className="contact__input" name="subject" ref={register} />
             {errors.subject && <p>{errors.subject.message}</p>}
           </div>
-          <div>
-            <label>Message</label>
-            <textarea name="message" ref={register} />
+          <div className="contact__input-box">
+            <label className="contact__label">Message: </label>
+            <textarea
+              id="textarea"
+              className="contact__input"
+              name="message"
+              ref={register}
+            />
             {errors.message && <p>{errors.message.message}</p>}
           </div>
-          <button className="form__button btn" type="submit">
+          <button className="contact__button" type="submit">
             {submit ? "Sending.." : "Send"}
           </button>
         </fieldset>
