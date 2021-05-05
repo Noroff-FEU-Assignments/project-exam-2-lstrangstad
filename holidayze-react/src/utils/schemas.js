@@ -1,15 +1,18 @@
 import * as yup from "yup";
 
 export const loginSchema = yup.object().shape({
-  username: yup.string().required("Please enter username"),
+  identifier: yup.string().required("Please enter username"),
   password: yup.string().required("Please enter password"),
 });
 
 export const bookingSchema = yup.object().shape({
+  hotel_name: yup.string().required(),
+  price: yup.number().required(),
   name: yup.string().required("required"),
   date: yup.date().required("required"),
   nights: yup.number().required("required"),
-  Persons: yup.number().required("required"),
+  adults: yup.number().required("required"),
+  children: yup.number().required("required"),
 });
 
 export const addSchema = yup.object().shape({
