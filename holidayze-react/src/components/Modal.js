@@ -10,6 +10,8 @@ import { BASE_URL } from "../utils/constants";
 import axios from "axios";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import { useFormik } from "formik";
+import * as yup from "yup";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -34,25 +36,48 @@ export default function TransitionsModal(props) {
   const [submit, setSubmit] = useState(false);
   const [postError, setPostError] = useState(null);
   const [success, setSuccess] = useState(null);
-  const { register, handleSubmit, errors } = useForm({
-    resolver: yupResolver(bookingSchema),
+  const {
+    handleChange,
+    handleSubmit,
+    values,
+    touched,
+    errors,
+    handleBlur,
+  } = useFormik({
+    initialValues: {
+      hotel_name: props.name,
+      price: props.price,
+      name: "",
+      date: "",
+      nights: "",
+      adults: "",
+      children: "",
+    },
+    bookingSchema: yup.object().shape({
+      hotel_name: yup.string().required(),
+      price: yup.number().required(),
+      name: yup.string().required("required"),
+      date: yup.date().required("required"),
+      nights: yup.number().required("required"),
+      adults: yup.number().required("required"),
+      children: yup.number().required("required"),
+    }),
+    onSubmit: async (data) => {
+      setSubmit(true);
+      setPostError(null);
+      console.log(data);
+
+      try {
+        const response = await axios.post(`${BASE_URL}/bookings`, data);
+        console.log(response.data);
+      } catch (err) {
+        console.log("error", err);
+        setPostError(err.toString());
+      } finally {
+        setSubmit(false);
+      }
+    },
   });
-
-  const onSubmit = async (data) => {
-    setSubmit(true);
-    setPostError(null);
-    console.log(data);
-
-    try {
-      const response = await axios.post(`${BASE_URL}/bookings`, data);
-      console.log(response.data);
-    } catch (err) {
-      console.log("error", err);
-      setPostError(err.toString());
-    } finally {
-      setSubmit(false);
-    }
-  };
 
   const handleOpen = () => {
     setOpen(true);
@@ -61,6 +86,8 @@ export default function TransitionsModal(props) {
   const handleClose = () => {
     setOpen(false);
   };
+
+  console.log(props.name);
 
   return (
     <div>
@@ -83,21 +110,21 @@ export default function TransitionsModal(props) {
           <div className={classes.paper}>
             <div className="modal">
               <h2 className="modal__header">Book now</h2>
-              <form className="modal__form" onSubmit={handleSubmit(onSubmit)}>
+              <form className="modal__form" onSubmit={handleSubmit}>
                 {postError && <p className="add__error">{postError}</p>}
                 <fieldset className="modal__field" disabled={submit}>
                   <input
                     className="modal__input"
                     value={props.name}
                     name="hotel_name"
-                    ref={register}
+                    onChange={handleChange}
                     type="hidden"
                   />
                   <input
                     className="modal__input"
                     value={props.price}
                     name="price"
-                    ref={register}
+                    onChange={handleChange}
                     type="hidden"
                   />
                   <div className="modal__input-box">
@@ -106,7 +133,8 @@ export default function TransitionsModal(props) {
                       className="modal__input"
                       type="text"
                       name="name"
-                      ref={register}
+                      value={values.name}
+                      onChange={handleChange}
                     />
                     {errors.name && <p>{errors.name.message}</p>}
                   </div>
@@ -114,11 +142,12 @@ export default function TransitionsModal(props) {
                     <label className="modal__label">Arrival: </label>
                     <input
                       className="modal__input"
-                      onChange={(e) => setStartDate(e.target.value)}
+                      onInput={(e) => setStartDate(e.target.value)}
                       id="startdate"
                       type="date"
                       name="date"
-                      ref={register}
+                      value={values.date}
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -128,7 +157,8 @@ export default function TransitionsModal(props) {
                       className="modal__input"
                       type="text"
                       name="nights"
-                      ref={register}
+                      value={values.nights}
+                      onChange={handleChange}
                     />
                     {errors.nights && <p>{errors.nights.message}</p>}
                   </div>
@@ -138,7 +168,8 @@ export default function TransitionsModal(props) {
                       className="modal__input"
                       type="text"
                       name="adults"
-                      ref={register}
+                      value={values.adults}
+                      onChange={handleChange}
                     />
                     {errors.adults && <p>{errors.adults.message}</p>}
                   </div>
@@ -148,7 +179,8 @@ export default function TransitionsModal(props) {
                       className="modal__input"
                       type="text"
                       name="children"
-                      ref={register}
+                      value={values.children}
+                      onChange={handleChange}
                     />
                     {errors.children && <p>{errors.children.message}</p>}
                   </div>
