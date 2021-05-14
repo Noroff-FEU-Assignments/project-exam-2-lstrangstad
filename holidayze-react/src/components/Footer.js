@@ -13,12 +13,12 @@ const Footer = () => {
           </Link>
         </li>
         <li className="footer__list">
-          <Link className="footer__link" to="">
+          <Link className="footer__link" to="/stays">
             Stays
           </Link>
         </li>
         <li className="footer__list">
-          <Link className="footer__link" to="">
+          <Link className="footer__link" to="/contact">
             Contact
           </Link>
         </li>
