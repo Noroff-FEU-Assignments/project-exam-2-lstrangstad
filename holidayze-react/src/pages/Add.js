@@ -15,6 +15,11 @@ const Add = () => {
   const [auth] = useContext(AuthContext);
   const http = useAxios();
   const history = useHistory();
+
+  if (!auth) {
+    history.push("/login");
+  }
+
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(addSchema),
   });
@@ -37,51 +42,79 @@ const Add = () => {
   };
 
   return (
-    <div>
-      <h1>Add accomodation</h1>
+    <div className="add">
+      <h1 className="add__heading">Add Establishment</h1>
       <div>
-        <form className="form" onSubmit={handleSubmit(onSubmit)}>
+        <form className="add__form" onSubmit={handleSubmit(onSubmit)}>
           {postError && <p>{postError}</p>}
-          <fieldset className="form__fieldset" disabled={submit}>
+          <fieldset className="add__field" disabled={submit}>
             {success ? (
               <p className="form__success">
                 Added new accomodation successfully
               </p>
             ) : null}
-            <div className="form__box">
+            <div className="add__box">
+              <label className="add__label">Establishment name</label>
               <input
+                className="add__input"
                 name="name"
-                placeholder="Occomodation name"
+                placeholder="name..."
                 ref={register}
               />
               {errors.name && <p>{errors.name.message}</p>}
             </div>
 
-            <div className="form__box">
-              <input
+            <div className="add__box">
+              <label className="add__label">Description</label>
+              <textarea
+                className="add__input"
                 name="description"
-                placeholder="Description"
+                placeholder="Description of establishment..."
                 ref={register}
               />
               {errors.description && <p>{errors.description.message}</p>}
             </div>
-            <div className="form__box">
-              <input name="price" placeholder="Price" ref={register} />
+            <div className="add__box">
+              <label className="add__label">Price</label>
+              <input
+                className="add__input"
+                name="price"
+                placeholder="1999..."
+                ref={register}
+              />
               {errors.price && <p>{errors.price.message}</p>}
             </div>
-            <div className="form__box">
-              <input name="rating" placeholder="Rating (9.5)" ref={register} />
+            <div className="add__box">
+              <label className="add__label">Rating</label>
+              <input
+                className="add__input"
+                name="rating"
+                placeholder="Rating (9.5)"
+                ref={register}
+              />
               {errors.rating && <p>{errors.rating.message}</p>}
             </div>
-            <div className="form__box">
-              <input name="image" placeholder="Image" ref={register} />
+            <div className="add__box">
+              <label className="add__label">Image</label>
+              <input
+                className="add__input"
+                name="image"
+                placeholder="Image URL..."
+                ref={register}
+              />
               {errors.image && <p>{errors.image.message}</p>}
             </div>
-            <div className="form__box">
-              <input name="adress" placeholder="Address" ref={register} />
+            <div className="add__box">
+              <label className="add__label">Address</label>
+              <input
+                className="add__input"
+                name="adress"
+                placeholder="Kong Oscars Gate 33..."
+                ref={register}
+              />
               {errors.adress && <p>{errors.adress.message}</p>}
             </div>
-            <button className="form__button btn" type="submit">
+            <button className="add__button btn" type="submit">
               {submit ? "Adding..." : "Add"}
             </button>
           </fieldset>
