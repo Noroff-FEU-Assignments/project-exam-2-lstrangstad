@@ -75,11 +75,6 @@ const RightNav = ({ open, setOpen }) => {
             </Link>
           </li>
           <li onClick={() => setOpen(!open)}>
-            <Link className="link" to="/add">
-              Add establishment
-            </Link>
-          </li>
-          <li onClick={() => setOpen(!open)}>
             <button onClick={logout}>Log out</button>
           </li>
         </>
