@@ -36,48 +36,42 @@ export default function TransitionsModal(props) {
   const [submit, setSubmit] = useState(false);
   const [postError, setPostError] = useState(null);
   const [success, setSuccess] = useState(null);
-  const {
-    handleChange,
-    handleSubmit,
-    values,
-    touched,
-    errors,
-    handleBlur,
-  } = useFormik({
-    initialValues: {
-      hotel_name: props.name,
-      price: props.price,
-      name: "",
-      date: "",
-      nights: "",
-      adults: "",
-      children: "",
-    },
-    bookingSchema: yup.object().shape({
-      hotel_name: yup.string().required(),
-      price: yup.number().required(),
-      name: yup.string().required("required"),
-      date: yup.date().required("required"),
-      nights: yup.number().required("required"),
-      adults: yup.number().required("required"),
-      children: yup.number().required("required"),
-    }),
-    onSubmit: async (data) => {
-      setSubmit(true);
-      setPostError(null);
-      console.log(data);
+  const { handleChange, handleSubmit, values, touched, errors, handleBlur } =
+    useFormik({
+      initialValues: {
+        hotel_name: props.name,
+        price: props.price,
+        name: "",
+        date: "",
+        nights: "",
+        adults: "",
+        children: "",
+      },
+      bookingSchema: yup.object().shape({
+        hotel_name: yup.string().required(),
+        price: yup.number().required(),
+        name: yup.string().required("required"),
+        date: yup.date().required("required"),
+        nights: yup.number().required("required"),
+        adults: yup.number().required("required"),
+        children: yup.number().required("required"),
+      }),
+      onSubmit: async (data) => {
+        setSubmit(true);
+        setPostError(null);
+        console.log(data);
 
-      try {
-        const response = await axios.post(`${BASE_URL}/bookings`, data);
-        console.log(response.data);
-      } catch (err) {
-        console.log("error", err);
-        setPostError(err.toString());
-      } finally {
-        setSubmit(false);
-      }
-    },
-  });
+        try {
+          const response = await axios.post(`${BASE_URL}/bookings`, data);
+          console.log(response.data);
+          setSuccess(true);
+        } catch (err) {
+          console.log("error", err);
+          setPostError(err.toString());
+        } finally {
+        }
+      },
+    });
 
   const handleOpen = () => {
     setOpen(true);
@@ -111,7 +105,10 @@ export default function TransitionsModal(props) {
             <div className="modal">
               <h2 className="modal__header">Book now</h2>
               <form className="modal__form" onSubmit={handleSubmit}>
-                {postError && <p className="add__error">{postError}</p>}
+                {postError && <p className="add__error error">{postError}</p>}
+                {success ? (
+                  <p className="modal__success success">Successfully sent</p>
+                ) : null}
                 <fieldset className="modal__field" disabled={submit}>
                   <input
                     className="modal__input"
