@@ -10,16 +10,20 @@ const DeleteButton = ({ id, param }) => {
   const url = `${BASE_URL}/${param}/${id}`;
 
   async function handleDelete() {
-    try {
-      await http.delete(url);
-      window.location.reload(false);
-    } catch (err) {
-      setError(err);
+    const confirmDelete = window.confirm("Are you sure you want to delete?");
+
+    if (confirmDelete) {
+      try {
+        await http.delete(url);
+        window.location.reload(false);
+      } catch (err) {
+        setError(err);
+      }
     }
   }
 
   return (
-    <button className="delete" onClick={handleDelete}>
+    <button className="delete enquiries__btn" onClick={handleDelete}>
       {error ? "Error" : "Delete"}
     </button>
   );
