@@ -25,16 +25,16 @@ const Stays = () => {
     <div className="stays">
       {loader ? (
         <div className="loader">
-          <CircularProgress style={{ textAlign: "center" }} />
+          <CircularProgress style={{ placeItems: "center" }} />
         </div>
       ) : (
         <>
           <h1 className="stays__header">Our hotels</h1>
-          <>
+          <div className="stays__container">
             {hotels.map((hotel) => {
               return <Card key={hotel.id} {...hotel} />;
             })}
-          </>
+          </div>
         </>
       )}
     </div>
