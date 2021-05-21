@@ -10,7 +10,7 @@
     padding-bottom: 20px;
   }
 
-  &__form {
+  &__content {
     max-width: 450px;
   }
 
@@ -38,5 +38,19 @@
 
   &__button {
     @include mixin.button;
+  }
+}
+
+@media (min-width: 768px) {
+  .contact {
+    padding: 40px;
+    min-height: 86vh;
+    &__container {
+      margin: 0 auto;
+    }
+
+    &__content {
+      margin-bottom: 20px;
+    }
   }
 }

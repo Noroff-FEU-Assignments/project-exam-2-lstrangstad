@@ -14,7 +14,9 @@
   }
 
   &__link {
-    padding: 5px 0;
+    padding: 10px 0;
+    color: blue;
+    text-decoration: none;
   }
 }
 
@@ -50,5 +52,14 @@
 
   &__output {
     padding: 5px 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .admin {
+    &__container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
   }
 }

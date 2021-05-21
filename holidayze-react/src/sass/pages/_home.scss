@@ -46,11 +46,52 @@
 
   &__item {
     padding: 10px 0;
-    //border-bottom: 1px solid;
   }
 
   &__link {
     text-decoration: none;
     color: black;
+  }
+}
+
+@media (min-width: 768px) {
+  .home {
+    position: relative;
+    height: 87vh;
+
+    &__container {
+      position: absolute;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.5) 0%,
+        rgba(0, 0, 0, 0.5) 85%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      top: 0;
+      left: 0;
+      padding: 40px;
+    }
+
+    &__headingbox {
+      font-size: 32px;
+      max-width: 650px;
+      color: white;
+      letter-spacing: 1.5px;
+    }
+
+    &__subheader {
+      font-size: 22px;
+      font-weight: normal;
+    }
+
+    &__input {
+      width: 350px;
+    }
+
+    &__toggleInner {
+      max-width: 350px;
+    }
   }
 }

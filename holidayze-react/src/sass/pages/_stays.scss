@@ -6,3 +6,15 @@
     margin-bottom: 20px;
   }
 }
+
+@media (min-width: 768px) {
+  .stays {
+    padding: 40px;
+    min-height: 86vh;
+    &__container {
+      display: grid;
+      grid-gap: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
+}

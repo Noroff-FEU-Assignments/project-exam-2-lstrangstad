@@ -33,3 +33,30 @@
     letter-spacing: 1.1px;
   }
 }
+
+@media (min-width: 768px) {
+  .footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 40px;
+
+    &__nav,
+    &__links,
+    &__bottom {
+      margin-bottom: 0;
+    }
+
+    &__links {
+      order: 1;
+    }
+
+    &__list {
+      margin: 0 10px;
+    }
+
+    &__links a {
+      margin: 0 10px;
+    }
+  }
+}

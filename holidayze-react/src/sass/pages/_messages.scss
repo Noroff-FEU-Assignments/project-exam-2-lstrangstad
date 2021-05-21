@@ -1,0 +1,36 @@
+.messages {
+  padding: 20px;
+  min-height: 78vh;
+
+  &__link {
+    color: blue;
+    text-decoration: none;
+  }
+
+  &__content {
+    padding: 20px 0;
+    border-bottom: 1px solid;
+  }
+
+  &__box {
+    display: flex;
+    align-items: center;
+  }
+
+  &__label {
+    margin-right: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .messages {
+    min-height: 87vh;
+    padding: 40px;
+
+    &__container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+  }
+}

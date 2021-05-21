@@ -52,3 +52,38 @@
     text-align: center;
   }
 }
+
+@media (min-width: 768px) {
+  .details {
+    padding: 40px;
+
+    .details__container {
+      display: flex;
+      flex-direction: column;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    &__content {
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: none;
+    }
+
+    &__image-container {
+      order: 1;
+      place-self: center;
+      overflow: hidden;
+    }
+
+    &__image {
+      border-radius: 5px;
+    }
+
+    &__overview {
+      order: 1;
+      padding: 20px 0;
+    }
+  }
+}

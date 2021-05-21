@@ -3,18 +3,28 @@
   overflow: hidden;
   border-bottom: 1px solid;
 
+  &:hover img {
+    transform: scale(1.2);
+  }
+
   &__link {
     text-decoration: none;
     color: black;
   }
 
+  &__img-box {
+    overflow: hidden;
+  }
+
   &__image {
     max-width: 100%;
     border-radius: 5px 5px 0 0;
+    transition: transform 250ms;
+    overflow: hidden;
   }
 
   &__content {
-    padding: 20px;
+    padding: 20px 0;
   }
 
   &__location {
@@ -35,5 +45,26 @@
     border-radius: 5px;
     font-size: 12px;
     font-weight: bold;
+  }
+}
+
+@media (min-width: 768px) {
+  .card {
+    margin: 20px 0;
+    overflow: hidden;
+    border-bottom: none;
+    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.8);
+
+    &__content {
+      padding: 20px;
+    }
+
+    &__location {
+      margin-bottom: 10px;
+    }
+
+    &__price {
+      margin-bottom: 10px;
+    }
   }
 }

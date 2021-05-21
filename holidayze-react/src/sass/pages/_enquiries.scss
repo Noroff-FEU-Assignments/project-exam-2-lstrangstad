@@ -1,0 +1,63 @@
+.enquiries {
+  padding: 20px;
+  min-height: 78vh;
+
+  &__link {
+    color: blue;
+    text-decoration: none;
+  }
+
+  &__container {
+    margin-top: 20px;
+    font-size: 14px;
+
+    div {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+
+  &__output {
+    padding: 5px 0;
+  }
+
+  &__total {
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-bottom: 1px solid;
+  }
+}
+
+@media (min-width: 768px) {
+  .enquiries {
+    padding: 40px;
+    min-height: 87vh;
+
+    &__container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      background-color: rgb(219, 219, 219);
+      padding: 10px;
+      border-radius: 5px;
+
+      div {
+        margin: 0 10px;
+        flex-direction: column;
+      }
+    }
+
+    &__total {
+      border-bottom: none;
+    }
+
+    &__btn {
+      width: 50px;
+      height: 50px;
+    }
+  }
+}

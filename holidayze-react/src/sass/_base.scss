@@ -19,3 +19,12 @@ img {
   display: flex;
   place-content: center;
 }
+
+.success {
+  background: variables.$successColor;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  width: 80%;
+  margin: 0 auto;
+}

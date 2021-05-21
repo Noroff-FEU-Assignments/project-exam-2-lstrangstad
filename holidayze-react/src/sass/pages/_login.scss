@@ -1,9 +1,23 @@
 .login {
   padding: 20px;
   min-height: 80vh;
+  display: flex;
+  flex-direction: column;
 
   &__heading {
     padding-bottom: 20px;
+  }
+
+  &__container {
+    max-width: 450px;
+  }
+
+  &__success {
+    color: rgb(22, 213, 22);
+  }
+  &__error {
+    color: rgb(203, 43, 43);
+    padding-bottom: 5px;
   }
 
   &__field {
@@ -27,5 +41,16 @@
     border-radius: 5px;
     background-color: rgb(5, 160, 5);
     color: white;
+  }
+}
+
+@media (min-width: 768px) {
+  .login {
+    padding: 40px;
+    min-height: 86vh;
+
+    &__container {
+      margin: 0 auto;
+    }
   }
 }

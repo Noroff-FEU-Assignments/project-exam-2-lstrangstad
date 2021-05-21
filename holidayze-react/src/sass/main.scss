@@ -9,9 +9,12 @@
 @use "./pages/login";
 @use "./pages/admin";
 @use "./pages/add";
+@use "./pages/enquiries";
+@use "./pages/messages";
 
 // Components
 @use "./components/nav";
 @use "./components/footer";
 @use "./components/card";
 @use "./components/modal";
+@use "./components/deleteButton";
