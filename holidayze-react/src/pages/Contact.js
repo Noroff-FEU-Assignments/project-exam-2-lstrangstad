@@ -31,41 +31,52 @@ const Contact = () => {
 
   return (
     <div className="contact">
-      <h1 className="contact__heading">Contact us</h1>
-      <form className="contact__form" onSubmit={handleSubmit(onSubmit)}>
-        {postError && <p>{postError}</p>}
-        {success ? <p>Message sendt</p> : null}
-        <fieldset className="contact__field" disabled={submit}>
-          <div className="contact__input-box">
-            <label className="contact__label">Name: </label>
-            <input className="contact__input" name="name" ref={register} />
-            {errors.name && <p>{errors.name.message}</p>}
-          </div>
-          <div className="contact__input-box">
-            <label className="contact__label">Email: </label>
-            <input className="contact__input" name="email" ref={register} />
-            {errors.email && <p>{errors.email.message}</p>}
-          </div>
-          <div className="contact__input-box">
-            <label className="contact__label">Subject: </label>
-            <input className="contact__input" name="subject" ref={register} />
-            {errors.subject && <p>{errors.subject.message}</p>}
-          </div>
-          <div className="contact__input-box">
-            <label className="contact__label">Message: </label>
-            <textarea
-              id="textarea"
-              className="contact__input"
-              name="message"
-              ref={register}
-            />
-            {errors.message && <p>{errors.message.message}</p>}
-          </div>
-          <button className="contact__button" type="submit">
-            {submit ? "Sending.." : "Send"}
-          </button>
-        </fieldset>
-      </form>
+      <div className="contact__container">
+        <div className="contact__content">
+          <h1 className="contact__heading">Contact us</h1>
+          <p>
+            Please send us message if you have any questions, or if you have
+            feedback to help us!
+          </p>
+        </div>
+
+        <form className="contact__form" onSubmit={handleSubmit(onSubmit)}>
+          {postError && <p>{postError}</p>}
+          {success ? (
+            <p className="contact__success success">Message sent</p>
+          ) : null}
+          <fieldset className="contact__field" disabled={submit}>
+            <div className="contact__input-box">
+              <label className="contact__label">Name: </label>
+              <input className="contact__input" name="name" ref={register} />
+              {errors.name && <p>{errors.name.message}</p>}
+            </div>
+            <div className="contact__input-box">
+              <label className="contact__label">Email: </label>
+              <input className="contact__input" name="email" ref={register} />
+              {errors.email && <p>{errors.email.message}</p>}
+            </div>
+            <div className="contact__input-box">
+              <label className="contact__label">Subject: </label>
+              <input className="contact__input" name="subject" ref={register} />
+              {errors.subject && <p>{errors.subject.message}</p>}
+            </div>
+            <div className="contact__input-box">
+              <label className="contact__label">Message: </label>
+              <textarea
+                id="textarea"
+                className="contact__input"
+                name="message"
+                ref={register}
+              />
+              {errors.message && <p>{errors.message.message}</p>}
+            </div>
+            <button className="contact__button" type="submit">
+              {submit ? "Sending.." : "Send"}
+            </button>
+          </fieldset>
+        </form>
+      </div>
     </div>
   );
 };

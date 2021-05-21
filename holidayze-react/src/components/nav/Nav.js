@@ -6,17 +6,23 @@ const Navbar = styled.nav`
   display: flex;
   width: 100%;
   height: 55px;
-  border-bottom: 2px solid #f1f1f1;
+  border-bottom: 2px solid #d54808;
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
   background-color: #13225d;
+  @media (min-width: 768px) {
+    padding: 0 40px;
+  }
   .logo {
     padding: 15px 0;
     .logotxt {
       color: white;
       text-decoration: none;
       font-size: 20px;
+      .logo-span {
+        color: #d54808;
+      }
     }
   }
 `;
@@ -26,7 +32,7 @@ const Nav = () => {
     <Navbar>
       <div className="logo">
         <Link className="logotxt" to="/">
-          Holi<span>daze</span>
+          Holi<span className="logo-span">daze</span>
         </Link>
       </div>
       <Burger />

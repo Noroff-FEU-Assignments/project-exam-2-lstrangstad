@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import { Link, useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 const Ul = styled.ul`
   list-style: none;
   display: flex;
   flex-flow: row nowrap;
   li {
-    padding: 18px 10px;
+    padding: 18px 20px;
   }
 
   .link {
@@ -16,14 +16,20 @@ const Ul = styled.ul`
     color: #fff;
   }
 
+  .link:hover {
+    border-bottom: 2px solid #d54808;
+  }
+
   button {
-    padding: 10px;
-    border-radius: 5px;
     border: none;
-    background-color: #d00000;
-    color: white;
-    font-weight: bold;
-    pointer: cursor;
+    background: transparent;
+    color: red;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .active {
+    border-bottom: 2px solid #d54808;
   }
 
   @media (max-width: 768px) {
@@ -53,26 +59,26 @@ const RightNav = ({ open, setOpen }) => {
   return (
     <Ul open={open}>
       <li onClick={() => setOpen(!open)}>
-        <Link className="link" to="/">
+        <NavLink exact activeClassName="active" className="link" to="/">
           Home
-        </Link>
+        </NavLink>
       </li>
       <li onClick={() => setOpen(!open)}>
-        <Link className="link" to="/stays">
+        <NavLink activeClassName="active" className="link" to="/stays">
           Stays
-        </Link>
+        </NavLink>
       </li>
       <li onClick={() => setOpen(!open)}>
-        <Link className="link" to="/contact">
+        <NavLink activeClassName="active" className="link" to="/contact">
           Contact Us
-        </Link>
+        </NavLink>
       </li>
       {auth ? (
         <>
           <li onClick={() => setOpen(!open)}>
-            <Link className="link" to="/admin">
+            <NavLink activeClassName="active" className="link" to="/admin">
               Admin
-            </Link>
+            </NavLink>
           </li>
           <li onClick={() => setOpen(!open)}>
             <button onClick={logout}>Log out</button>
@@ -80,9 +86,9 @@ const RightNav = ({ open, setOpen }) => {
         </>
       ) : (
         <li className="login" onClick={() => setOpen(!open)}>
-          <Link className="link" to="/login">
+          <NavLink className="link" to="/login">
             Login
-          </Link>
+          </NavLink>
         </li>
       )}
     </Ul>

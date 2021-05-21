@@ -43,36 +43,38 @@ const Home = () => {
 
   return (
     <div className="home">
-      <div className="home__headingbox">
-        <h1 className="home__heading">
-          Find your accommodation in Bergen now!
-        </h1>
-      </div>
-      <div>
-        <h2 className="home__subheader">Search Hotel</h2>
-        <input className="home__input" type="text" onChange={handleFilter} />
-        <div className={toggle}>
-          <>
-            {isFiltered ? (
-              <div className="home__toggleInner">
-                <ul className="home__list">
-                  {filter?.map((hotel) => {
-                    return (
-                      <li className="home__item" key={hotel.id}>
-                        <Link
-                          className="home__link"
-                          style={{ display: "flex" }}
-                          to={`/details/${hotel.id}`}
-                        >
-                          {hotel.name}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            ) : null}
-          </>
+      <div className="home__container">
+        <div className="home__headingbox">
+          <h1 className="home__heading">
+            Find your accommodation in Bergen now!
+          </h1>
+        </div>
+        <div>
+          <h2 className="home__subheader">Search Hotel</h2>
+          <input className="home__input" type="text" onChange={handleFilter} />
+          <div className={toggle}>
+            <>
+              {isFiltered ? (
+                <div className="home__toggleInner">
+                  <ul className="home__list">
+                    {filter?.map((hotel) => {
+                      return (
+                        <li className="home__item" key={hotel.id}>
+                          <Link
+                            className="home__link"
+                            style={{ display: "flex" }}
+                            to={`/details/${hotel.id}`}
+                          >
+                            {hotel.name}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ) : null}
+            </>
+          </div>
         </div>
       </div>
     </div>

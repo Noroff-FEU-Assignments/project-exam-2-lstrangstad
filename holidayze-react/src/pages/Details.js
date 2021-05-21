@@ -27,7 +27,7 @@ const Details = () => {
           <CircularProgress />
         </div>
       ) : (
-        <>
+        <div className="details__container">
           <div className="details__image-container">
             <img
               className="details__image"
@@ -36,9 +36,11 @@ const Details = () => {
             />
           </div>
           <div className="details__content">
-            <h1 className="details__title">{hotel.name}</h1>
-            <p className="details__location">{hotel.location}</p>
-            <div className="details__rating">{hotel.rating}</div>
+            <div>
+              <h1 className="details__title">{hotel.name}</h1>
+              <p className="details__location">{hotel.location}</p>
+              <div className="details__rating">{hotel.rating}</div>
+            </div>
             <div>
               <p className="details__price">
                 <span className="details__number">{hotel.price}</span>kr/night
@@ -50,7 +52,7 @@ const Details = () => {
             <h2 className="details__heading">Overview</h2>
             <p className="details__description">{hotel.description}</p>
           </div>
-        </>
+        </div>
       )}
     </div>
   );
