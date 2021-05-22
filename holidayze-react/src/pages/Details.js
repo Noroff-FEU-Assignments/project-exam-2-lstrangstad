@@ -15,7 +15,6 @@ const Details = () => {
       const response = await axios.get(`${BASE_URL}/hotels/${id}`);
       setHotel(response.data);
       setLoader(false);
-      console.log(response.data);
     };
     fetchHotel();
   }, []);
