@@ -7,7 +7,7 @@
   min-height: 80vh;
 
   &__heading {
-    padding-bottom: 20px;
+    padding: 20px 0;
   }
 
   &__form {
@@ -38,5 +38,26 @@
 
   &__button {
     @include mixin.button;
+  }
+}
+
+@media (min-width: 768px) {
+  .add {
+    padding: 40px;
+    min-height: 87vh;
+
+    &__heading {
+      text-align: center;
+    }
+
+    &__container {
+      margin: 0 auto;
+      width: 450px;
+    }
+
+    &__link {
+      color: blue;
+      text-decoration: none;
+    }
   }
 }

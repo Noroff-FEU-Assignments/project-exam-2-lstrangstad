@@ -1,3 +1,5 @@
+@use "../mixin";
+
 .enquiries {
   padding: 20px;
   min-height: 78vh;
@@ -10,6 +12,7 @@
   &__container {
     margin-top: 20px;
     font-size: 14px;
+    max-width: 300px;
 
     div {
       display: flex;
@@ -28,8 +31,10 @@
 
   &__total {
     font-weight: bold;
-    margin-bottom: 20px;
-    border-bottom: 1px solid;
+  }
+
+  &__btn {
+    @include mixin.button;
   }
 }
 
@@ -44,6 +49,8 @@
       background-color: rgb(219, 219, 219);
       padding: 10px;
       border-radius: 5px;
+      max-width: none;
+      align-items: center;
 
       div {
         margin: 0 10px;
@@ -56,8 +63,10 @@
     }
 
     &__btn {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 40px;
+      font-size: 10px;
+      cursor: pointer;
     }
   }
 }

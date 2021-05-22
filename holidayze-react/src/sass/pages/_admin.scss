@@ -1,5 +1,6 @@
 .admin {
   padding: 20px;
+  min-height: 76vh;
 
   &__heading {
     padding-bottom: 20px;
@@ -57,6 +58,8 @@
 
 @media (min-width: 768px) {
   .admin {
+    padding: 40px;
+    min-height: 87vh;
     &__container {
       max-width: 900px;
       margin: 0 auto;

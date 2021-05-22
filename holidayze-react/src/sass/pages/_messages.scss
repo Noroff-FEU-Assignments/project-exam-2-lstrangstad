@@ -1,3 +1,5 @@
+@use "../mixin";
+
 .messages {
   padding: 20px;
   min-height: 78vh;
@@ -7,18 +9,32 @@
     text-decoration: none;
   }
 
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
   &__content {
-    padding: 20px 0;
-    border-bottom: 1px solid;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 350px;
   }
 
   &__box {
-    display: flex;
-    align-items: center;
+    margin-bottom: 10px;
   }
 
   &__label {
-    margin-right: 10px;
+    font-weight: bold;
+  }
+
+  &__output {
+    line-height: 1.5em;
+  }
+
+  &__btn {
+    @include mixin.button;
   }
 }
 
@@ -28,9 +44,13 @@
     padding: 40px;
 
     &__container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    &__content {
+      max-width: 300px;
     }
   }
 }

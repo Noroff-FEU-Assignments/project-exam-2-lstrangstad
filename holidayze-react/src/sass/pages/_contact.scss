@@ -36,6 +36,10 @@
     min-height: 150px;
   }
 
+  &__error {
+    color: rgb(203, 43, 43);
+  }
+
   &__button {
     @include mixin.button;
   }
