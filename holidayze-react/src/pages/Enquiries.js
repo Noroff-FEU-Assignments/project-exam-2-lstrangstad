@@ -45,6 +45,9 @@ const Enquiries = () => {
         <>
           {enquiry?.map((enq) => {
             const priceTotal = enq.price * enq.nights;
+            const inputDate = new Date(enq.date);
+            const nights = new Date(inputDate);
+            nights.setDate(nights.getDate() + enq.nights);
             return (
               <div className="enquiries__container" key={enq.id}>
                 <div>
@@ -57,7 +60,15 @@ const Enquiries = () => {
                 </div>
                 <div>
                   <label className="enquiries__label">Check-in:</label>
-                  <p className="enquiries__output">{enq.date}</p>
+                  <p className="enquiries__output">
+                    {new Date(enq.date).toString().substring(0, 15)}
+                  </p>
+                </div>
+                <div>
+                  <label className="enquiries__label">Check-out:</label>
+                  <p className="enquiries__output">
+                    {nights.toString().substring(0, 15)}
+                  </p>
                 </div>
                 <div>
                   <label className="enquiries__label">Nights:</label>
@@ -72,10 +83,6 @@ const Enquiries = () => {
                   <p className="enquiries__output">{enq.children}</p>
                 </div>
                 <div>
-                  <label className="enquiries__label">Price pr/n:</label>
-                  <p className="enquiries__output">{enq.price}kr</p>
-                </div>
-                <div>
                   <label className="enquiries__label">Total price:</label>
                   <p className="enquiries__output enquiries__total">
                     {priceTotal}kr
@@ -83,7 +90,7 @@ const Enquiries = () => {
                 </div>
                 <div>
                   <DeleteButton
-                    className="enquiries__btn"
+                    className={"enquiries__btn"}
                     param={param}
                     id={enq.id}
                   />
