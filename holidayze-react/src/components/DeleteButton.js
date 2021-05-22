@@ -2,7 +2,7 @@ import { useState } from "react";
 import useAxios from "../utils/useAxios";
 import { BASE_URL } from "../utils/constants";
 
-const DeleteButton = ({ id, param }) => {
+const DeleteButton = ({ id, param, className }) => {
   const [error, setError] = useState(null);
 
   const http = useAxios();
@@ -23,7 +23,7 @@ const DeleteButton = ({ id, param }) => {
   }
 
   return (
-    <button className="delete enquiries__btn" onClick={handleDelete}>
+    <button className={className} onClick={handleDelete}>
       {error ? "Error" : "Delete"}
     </button>
   );
