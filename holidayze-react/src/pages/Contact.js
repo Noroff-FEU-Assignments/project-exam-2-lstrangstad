@@ -41,7 +41,7 @@ const Contact = () => {
         </div>
 
         <form className="contact__form" onSubmit={handleSubmit(onSubmit)}>
-          {postError && <p>{postError}</p>}
+          {postError && <p className="contact__error">{postError}</p>}
           {success ? (
             <p className="contact__success success">Message sent</p>
           ) : null}
@@ -49,17 +49,23 @@ const Contact = () => {
             <div className="contact__input-box">
               <label className="contact__label">Name: </label>
               <input className="contact__input" name="name" ref={register} />
-              {errors.name && <p>{errors.name.message}</p>}
+              {errors.name && (
+                <p className="contact__error">{errors.name.message}</p>
+              )}
             </div>
             <div className="contact__input-box">
               <label className="contact__label">Email: </label>
               <input className="contact__input" name="email" ref={register} />
-              {errors.email && <p>{errors.email.message}</p>}
+              {errors.email && (
+                <p className="contact__error">{errors.email.message}</p>
+              )}
             </div>
             <div className="contact__input-box">
               <label className="contact__label">Subject: </label>
               <input className="contact__input" name="subject" ref={register} />
-              {errors.subject && <p>{errors.subject.message}</p>}
+              {errors.subject && (
+                <p className="contact__error">{errors.subject.message}</p>
+              )}
             </div>
             <div className="contact__input-box">
               <label className="contact__label">Message: </label>
@@ -69,7 +75,9 @@ const Contact = () => {
                 name="message"
                 ref={register}
               />
-              {errors.message && <p>{errors.message.message}</p>}
+              {errors.message && (
+                <p className="contact__error">{errors.message.message}</p>
+              )}
             </div>
             <button className="contact__button" type="submit">
               {submit ? "Sending.." : "Send"}
