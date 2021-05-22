@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { BASE_URL } from "../utils/constants";
 import AuthContext from "../context/AuthContext";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAxios from "../utils/useAxios";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -43,8 +43,11 @@ const Add = () => {
 
   return (
     <div className="add">
+      <Link className="add__link" to="/admin">
+        Back
+      </Link>
       <h1 className="add__heading">Add Establishment</h1>
-      <div>
+      <div className="add__container">
         <form className="add__form" onSubmit={handleSubmit(onSubmit)}>
           {postError && <p>{postError}</p>}
           <fieldset className="add__field" disabled={submit}>
