@@ -4,7 +4,7 @@ import { BASE_URL, AUTH_PATH } from "../utils/constants";
 import AuthContext from "../context/AuthContext";
 import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
-import * as yup from "yup";
+import * as Yup from "yup";
 
 const Login = () => {
   const [submit, setSubmit] = useState(false);
@@ -19,18 +19,16 @@ const Login = () => {
         identifier: "",
         password: "",
       },
-      loginSchema: yup.object().shape({
-        identifier: yup.string().required("Please enter username"),
-        password: yup.string().required("Please enter password"),
+      validationSchema: Yup.object().shape({
+        identifier: Yup.string().required("Please enter username"),
+        password: Yup.string().required("Please enter password"),
       }),
       onSubmit: async (values) => {
         setSubmit(true);
         setLoginError(null);
-        console.log(values);
 
         try {
           const response = await axios.post(`${BASE_URL}${AUTH_PATH}`, values);
-          console.log(response.data);
           setAuth(response.data);
           setSuccess(true);
           if (response.status === 200) {
@@ -69,7 +67,7 @@ const Login = () => {
                   placeholder="Username"
                 />
                 {touched.identifier && errors.identifier ? (
-                  <p>{errors.identifier}</p>
+                  <p className="login__error">{errors.identifier}</p>
                 ) : null}
               </div>
 
@@ -85,7 +83,7 @@ const Login = () => {
                   type="password"
                 />
                 {touched.password && errors.password ? (
-                  <div>{errors.password}</div>
+                  <div className="login__error">{errors.password}</div>
                 ) : null}
               </div>
               <button className="login__button btn" type="submit">

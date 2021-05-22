@@ -2,16 +2,13 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { bookingSchema } from "../utils/schemas";
+import { useState } from "react";
 import { BASE_URL } from "../utils/constants";
 import axios from "axios";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import { useFormik } from "formik";
-import * as yup from "yup";
+import * as Yup from "yup";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -32,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
 export default function TransitionsModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [startDate, setStartDate] = useState(new Date().toISOString());
   const [submit, setSubmit] = useState(false);
   const [postError, setPostError] = useState(null);
   const [success, setSuccess] = useState(null);
@@ -47,28 +43,27 @@ export default function TransitionsModal(props) {
         adults: "",
         children: "",
       },
-      bookingSchema: yup.object().shape({
-        hotel_name: yup.string().required(),
-        price: yup.number().required(),
-        name: yup.string().required("required"),
-        date: yup.date().required("required"),
-        nights: yup.number().required("required"),
-        adults: yup.number().required("required"),
-        children: yup.number().required("required"),
+      validationSchema: Yup.object().shape({
+        hotel_name: Yup.string().required(),
+        price: Yup.number().required(),
+        name: Yup.string().required("required"),
+        date: Yup.date().required("required"),
+        nights: Yup.number().required("required"),
+        adults: Yup.number().required("required"),
+        children: Yup.number().required("required"),
       }),
       onSubmit: async (data) => {
         setSubmit(true);
         setPostError(null);
-        console.log(data);
 
         try {
           const response = await axios.post(`${BASE_URL}/bookings`, data);
-          console.log(response.data);
           setSuccess(true);
         } catch (err) {
           console.log("error", err);
           setPostError(err.toString());
         } finally {
+          setSubmit(false);
         }
       },
     });
@@ -80,8 +75,6 @@ export default function TransitionsModal(props) {
   const handleClose = () => {
     setOpen(false);
   };
-
-  console.log(props.name);
 
   return (
     <div>
@@ -125,63 +118,89 @@ export default function TransitionsModal(props) {
                     type="hidden"
                   />
                   <div className="modal__input-box">
-                    <label className="modal__label">Name: </label>
+                    <label htmlFor="name" className="modal__label">
+                      Name:{" "}
+                    </label>
                     <input
                       className="modal__input"
                       type="text"
+                      id="name"
                       name="name"
                       value={values.name}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                     />
-                    {errors.name && <p>{errors.name.message}</p>}
+                    {touched.name && errors.name ? <p>{errors.name}</p> : null}
                   </div>
                   <div className="modal__input-box">
-                    <label className="modal__label">Arrival: </label>
+                    <label htmlFor="date" className="modal__label">
+                      Arrival:{" "}
+                    </label>
                     <input
                       className="modal__input"
-                      onInput={(e) => setStartDate(e.target.value)}
-                      id="startdate"
+                      id="date"
                       type="date"
                       name="date"
                       value={values.date}
                       onChange={handleChange}
-                      required
+                      onBlur={handleBlur}
                     />
+                    {touched.date && errors.date ? <p>{errors.date}</p> : null}
                   </div>
                   <div className="modal__input-box">
-                    <label className="modal__label">Nights: </label>
+                    <label htmlFor="nights" className="modal__label">
+                      Nights:{" "}
+                    </label>
                     <input
                       className="modal__input"
                       type="text"
+                      id="nights"
                       name="nights"
                       value={values.nights}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                     />
-                    {errors.nights && <p>{errors.nights.message}</p>}
+                    {touched.nights && errors.nights ? (
+                      <p>{errors.nights}</p>
+                    ) : null}
                   </div>
                   <div className="modal__input-box">
-                    <label className="modal__label">Adults: </label>
+                    <label htmlFor="adults" className="modal__label">
+                      Adults:{" "}
+                    </label>
                     <input
                       className="modal__input"
                       type="text"
+                      id="adults"
                       name="adults"
                       value={values.adults}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                     />
-                    {errors.adults && <p>{errors.adults.message}</p>}
+                    {touched.adults && errors.adults ? (
+                      <p>{errors.adults}</p>
+                    ) : null}
                   </div>
                   <div className="modal__input-box">
-                    <label className="modal__label">Children: </label>
+                    <label htmlFor="children" className="modal__label">
+                      Children:{" "}
+                    </label>
                     <input
                       className="modal__input"
                       type="text"
+                      id="children"
                       name="children"
                       value={values.children}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                     />
-                    {errors.children && <p>{errors.children.message}</p>}
+                    {touched.children && errors.children ? (
+                      <p>{errors.children}</p>
+                    ) : null}
                   </div>
-                  <button className="modal__button">Send</button>
+                  <button type="submit" className="modal__button">
+                    Send
+                  </button>
                 </fieldset>
               </form>
             </div>
