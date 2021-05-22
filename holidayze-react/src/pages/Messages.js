@@ -48,32 +48,38 @@ const Messages = () => {
               return (
                 <div className="messages__content" key={message.id}>
                   <div className="messages__box">
-                    <label className="messages__label">Sent:</label>
                     <p className="messages__output">
+                      <span className="messages__label">Sent: </span>
                       {message.created_at.toString().substring(0, 10)}
                     </p>
                   </div>
                   <div className="messages__box">
-                    <label className="messages__label">Name:</label>
-                    <p className="messages__output">{message.name}</p>
+                    <p className="messages__output">
+                      <span className="messages__label">Name: </span>
+                      {message.name}
+                    </p>
                   </div>
                   <div className="messages__box">
-                    <label className="messages__label">Email:</label>
-                    <p className="messages__output">{message.email}</p>
+                    <p className="messages__output">
+                      <span className="messages__label">Email: </span>
+                      {message.email}
+                    </p>
                   </div>
                   <div className="messages__box">
-                    <label className="messages__label">Subject:</label>
-                    <p className="messages__output">{message.subject}</p>
+                    <p className="messages__output">
+                      <span className="messages__label">Subject: </span>
+                      {message.subject}
+                    </p>
                   </div>
                   <div className="messages__box">
-                    <label className="messages__label">Message:</label>
                     <p className="messages__output messages__msg">
+                      <span className="messages__label">Message: </span>
                       {message.message}
                     </p>
                   </div>
-                  <div>
+                  <div className="messages__btn-box">
                     <DeleteButton
-                      className="messages__btn"
+                      className={"messages__btn"}
                       param={param}
                       id={message.id}
                     />
