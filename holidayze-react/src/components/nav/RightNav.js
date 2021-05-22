@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NavLink, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 
@@ -11,13 +11,13 @@ const Ul = styled.ul`
     padding: 18px 20px;
   }
 
+  .link:hover {
+    border-bottom: 2px solid #d54808;
+  }
+
   .link {
     text-decoration: none;
     color: #fff;
-  }
-
-  .link:hover {
-    border-bottom: 2px solid #d54808;
   }
 
   button {
@@ -51,6 +51,11 @@ const Ul = styled.ul`
 const RightNav = ({ open, setOpen }) => {
   const [auth, setAuth] = useContext(AuthContext);
   const history = useHistory();
+  const location = useLocation();
+
+  const { pathname } = location;
+
+  const splitLocation = pathname.split("/");
 
   const logout = () => {
     setAuth(null);
@@ -59,36 +64,51 @@ const RightNav = ({ open, setOpen }) => {
   return (
     <Ul open={open}>
       <li onClick={() => setOpen(!open)}>
-        <NavLink exact activeClassName="active" className="link" to="/">
+        <Link
+          className={splitLocation[1] === "" ? "active link" : "link"}
+          to="/"
+        >
           Home
-        </NavLink>
+        </Link>
       </li>
       <li onClick={() => setOpen(!open)}>
-        <NavLink activeClassName="active" className="link" to="/stays">
+        <Link
+          className={splitLocation[1] === "stays" ? "active link" : "link"}
+          to="/stays"
+        >
           Stays
-        </NavLink>
+        </Link>
       </li>
       <li onClick={() => setOpen(!open)}>
-        <NavLink activeClassName="active" className="link" to="/contact">
+        <Link
+          className={splitLocation[1] === "contact" ? "active link" : "link"}
+          to="/contact"
+        >
           Contact Us
-        </NavLink>
+        </Link>
       </li>
       {auth ? (
         <>
           <li onClick={() => setOpen(!open)}>
-            <NavLink activeClassName="active" className="link" to="/admin">
+            <Link
+              className={splitLocation[1] === "admin" ? "active link" : "link"}
+              to="/admin"
+            >
               Admin
-            </NavLink>
+            </Link>
           </li>
           <li onClick={() => setOpen(!open)}>
             <button onClick={logout}>Log out</button>
           </li>
         </>
       ) : (
-        <li className="login" onClick={() => setOpen(!open)}>
-          <NavLink className="link" to="/login">
+        <li onClick={() => setOpen(!open)}>
+          <Link
+            className={splitLocation[1] === "login" ? "active link" : "link"}
+            to="/login"
+          >
             Login
-          </NavLink>
+          </Link>
         </li>
       )}
     </Ul>
