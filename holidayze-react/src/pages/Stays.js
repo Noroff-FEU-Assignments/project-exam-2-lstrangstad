@@ -3,13 +3,14 @@ import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import Card from "../components/Card";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { HotelRounded } from "@material-ui/icons";
+import SelectType from "../components/SelectType";
+import { Helmet } from "react-helmet";
 
 const Stays = () => {
   const [hotels, setHotels] = useState([]);
-  const [filter, setFilter] = useState("");
-  const [isFiltered, setIsFiltered] = useState(false);
+  const [selectFilter, setSelectFilter] = useState("");
   const [loader, setLoader] = useState(true);
+  const [selected, setSelected] = useState(false);
 
   useEffect(function () {
     const fetchHotels = async () => {
@@ -24,36 +25,46 @@ const Stays = () => {
     fetchHotels();
   }, []);
 
-  const handleFilter = (e) => {
-    let filteredHotels = hotels.filter((hotel) => {
-      return hotel.name.toLowerCase().includes(e.target.value.toLowerCase());
-    });
-    setFilter(filteredHotels);
-    setIsFiltered(true);
-  };
+  const options = [
+    { label: "All Stays", value: "all" },
+    { label: "Hotels", value: "hotel" },
+    { label: "Cabins", value: "cabin" },
+    { label: "B&Bs", value: "b&b" },
+  ];
 
-  console.log(filter);
+  function onChangeValue(value) {
+    let filteredTypes = hotels.filter((hotel) => {
+      return hotel.type.toLowerCase().includes(value.value);
+    });
+    setSelectFilter(filteredTypes);
+    if (value.value === "all") {
+      setSelected(false);
+    } else {
+      setSelected(true);
+    }
+  }
 
   return (
     <div className="stays">
+      <Helmet>
+        <title>Holidaze | Stays</title>
+      </Helmet>
       <h1 className="stays__header">Our hotels</h1>
-      <input type="text" className="stays__search" onChange={handleFilter} />
-      <select name="" id="">
-        <option value="">All stays</option>
-        <option value="">Hotel</option>
-        <option value="">B&B</option>
-        <option value="">Cabin</option>
-      </select>
+      <SelectType
+        options={options}
+        onChange={onChangeValue}
+        type={hotels.type}
+      />
       {loader ? (
         <div className="loader">
           <CircularProgress style={{ placeItems: "center" }} />
         </div>
       ) : (
         <>
-          {isFiltered ? (
+          {selected ? (
             <div className="stays__container">
-              {filter.length !== 0 ? (
-                filter.map((hotel) => <Card key={hotel.id} {...hotel} />)
+              {selectFilter.length !== 0 ? (
+                selectFilter.map((hotel) => <Card key={hotel.id} {...hotel} />)
               ) : (
                 <div>
                   <p>No Hotels is matching your search...</p>
