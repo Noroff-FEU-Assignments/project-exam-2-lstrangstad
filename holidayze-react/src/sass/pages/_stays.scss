@@ -6,6 +6,12 @@
     margin-bottom: 20px;
   }
 
+  &__filter {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+  }
+
   &__container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
