@@ -133,6 +133,18 @@ const Add = () => {
                 <p className="add__error">{errors.location.message}</p>
               )}
             </div>
+            <div className="add__box">
+              <label className="add__label">Type</label>
+              <input
+                className="add__input"
+                name="type"
+                placeholder="Cabin etc..."
+                ref={register}
+              />
+              {errors.type && (
+                <p className="add__error">{errors.type.message}</p>
+              )}
+            </div>
             <button className="add__button btn" type="submit">
               {submit ? "Adding..." : "Add"}
             </button>
