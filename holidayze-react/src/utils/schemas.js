@@ -23,6 +23,7 @@ export const addSchema = yup.object().shape({
   price: yup.number().required("Please enter price of establishment"),
   image: yup.string().required("Please enter image URL of establishment"),
   location: yup.string().required("Please enter location of establishment"),
+  type: yup.string().required("Please enter type of establishment"),
   rating: yup.string().required("Please enter rating of establishment"),
 });
 
