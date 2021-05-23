@@ -35,7 +35,9 @@ const Footer = () => {
         </a>
       </div>
       <div className="footer__bottom">
-        <p className="footer__copy">Copyright Linus Strangstad</p>
+        <p className="footer__copy">
+          Copyright &copy; 2021 Holidaze&trade;. All rights reserved.
+        </p>
       </div>
     </div>
   );
