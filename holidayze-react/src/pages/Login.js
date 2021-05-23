@@ -5,6 +5,7 @@ import AuthContext from "../context/AuthContext";
 import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const [submit, setSubmit] = useState(false);
@@ -45,6 +46,9 @@ const Login = () => {
 
   return (
     <div className="login">
+      <Helmet>
+        <title>Holidaze | Login</title>
+      </Helmet>
       <div className="login__container">
         <h1 className="login__heading">Admin login</h1>
         <div>

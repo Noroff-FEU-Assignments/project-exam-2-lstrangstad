@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { BASE_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const [hotels, setHotels] = useState([]);
@@ -40,6 +41,13 @@ const Home = () => {
 
   return (
     <div className="home">
+      <Helmet>
+        <title>Holidaze | Home</title>
+        <meta
+          name="description"
+          content="This is the home page for Holidaze. We provide you with accomodation in Bergen. And here you can use the searchbar to find your accomodation fast."
+        />
+      </Helmet>
       <div className="home__container">
         <div className="home__headingbox">
           <h1 className="home__heading">

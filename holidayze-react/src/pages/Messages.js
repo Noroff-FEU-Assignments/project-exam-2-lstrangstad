@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { useHistory } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { Helmet } from "react-helmet";
 
 const Messages = () => {
   const [messages, setMessages] = useState(null);
@@ -34,6 +35,9 @@ const Messages = () => {
   }, []);
   return (
     <div className="messages">
+      <Helmet>
+        <title>Holidaze | Messages</title>
+      </Helmet>
       <Link className="messages__link" to="/admin">
         Back
       </Link>

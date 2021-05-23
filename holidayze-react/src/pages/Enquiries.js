@@ -1,11 +1,12 @@
 import { useEffect, useState, useContext } from "react";
 import { BASE_URL } from "../utils/constants";
 import useAxios from "../utils/useAxios";
-import DeleteButton from "../components/DeleteButton";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { useHistory } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Enquiry from "../components/Enquiry";
+import { Helmet } from "react-helmet";
 
 const Enquiries = () => {
   const [enquiry, setEnquiry] = useState([]);
@@ -13,7 +14,8 @@ const Enquiries = () => {
   const http = useAxios();
   const history = useHistory();
   const [auth] = useContext(AuthContext);
-
+  const [filter, setFilter] = useState("");
+  const [isFiltered, setIsFiltered] = useState(false);
   const param = "bookings";
 
   if (!auth) {
@@ -32,72 +34,53 @@ const Enquiries = () => {
     };
     fetchEnquiries();
   }, []);
+
+  const handleFilter = (e) => {
+    let filteredHotels = enquiry.filter((enq) => {
+      return enq.name.toLowerCase().includes(e.target.value.toLowerCase());
+    });
+    setFilter(filteredHotels);
+    setIsFiltered(true);
+  };
+
   return (
     <div className="enquiries">
+      <Helmet>
+        <title>Holidaze | Enquiries</title>
+      </Helmet>
       <Link className="enquiries__link" to="/admin">
         Back
       </Link>
+      <div className="enquiries__search">
+        <input
+          type="text"
+          placeholder="Search Guest..."
+          onChange={handleFilter}
+        />
+      </div>
       {loader ? (
         <div className="loader">
           <CircularProgress style={{ placeItems: "center" }} />
         </div>
       ) : (
         <>
-          {enquiry?.map((enq) => {
-            const priceTotal = enq.price * enq.nights;
-            const inputDate = new Date(enq.date);
-            const nights = new Date(inputDate);
-            nights.setDate(nights.getDate() + enq.nights);
-            return (
-              <div className="enquiries__container" key={enq.id}>
+          {isFiltered ? (
+            <>
+              {filter.length !== 0 ? (
+                filter.map((enq) => <Enquiry key={enq.id} {...enq} />)
+              ) : (
                 <div>
-                  <label className="enquiries__label">Hotel name:</label>
-                  <p className="enquiries__output">{enq.hotel_name}</p>
+                  <p>Can't find person by that name...</p>
                 </div>
-                <div>
-                  <label className="enquiries__label">Guest name:</label>
-                  <p className="enquiries__output">{enq.name}</p>
-                </div>
-                <div>
-                  <label className="enquiries__label">Check-in:</label>
-                  <p className="enquiries__output">
-                    {new Date(enq.date).toString().substring(0, 15)}
-                  </p>
-                </div>
-                <div>
-                  <label className="enquiries__label">Check-out:</label>
-                  <p className="enquiries__output">
-                    {nights.toString().substring(0, 15)}
-                  </p>
-                </div>
-                <div>
-                  <label className="enquiries__label">Nights:</label>
-                  <p className="enquiries__output">{enq.nights}</p>
-                </div>
-                <div>
-                  <label className="enquiries__label">Adults:</label>
-                  <p className="enquiries__output">{enq.adults}</p>
-                </div>
-                <div>
-                  <label className="enquiries__label">Children:</label>
-                  <p className="enquiries__output">{enq.children}</p>
-                </div>
-                <div>
-                  <label className="enquiries__label">Total price:</label>
-                  <p className="enquiries__output enquiries__total">
-                    {priceTotal}kr
-                  </p>
-                </div>
-                <div>
-                  <DeleteButton
-                    className={"enquiries__btn"}
-                    param={param}
-                    id={enq.id}
-                  />
-                </div>
-              </div>
-            );
-          })}
+              )}
+            </>
+          ) : (
+            <>
+              {enquiry.map((enq) => (
+                <Enquiry key={enq.id} {...enq} />
+              ))}
+            </>
+          )}
         </>
       )}
     </div>

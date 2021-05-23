@@ -4,6 +4,7 @@ import AuthContext from "../context/AuthContext";
 import { useHistory } from "react-router-dom";
 import FetchLastEnquiry from "../components/FetchLastEnquiry";
 import FetchLastMessage from "../components/FetchLastMessage";
+import { Helmet } from "react-helmet";
 
 const Admin = () => {
   const history = useHistory();
@@ -15,6 +16,9 @@ const Admin = () => {
 
   return (
     <div className="admin">
+      <Helmet>
+        <title>Holidaze | Admin</title>
+      </Helmet>
       <h1 className="admin__heading">Admin Panel</h1>
       <div className="admin__links">
         <Link className="admin__link" to="/enquiries">

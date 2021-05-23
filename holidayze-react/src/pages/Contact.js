@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { contactSchema } from "../utils/schemas";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const Contact = () => {
   const [submit, setSubmit] = useState(false);
@@ -31,6 +32,9 @@ const Contact = () => {
 
   return (
     <div className="contact">
+      <Helmet>
+        <title>Holidaze | Contact</title>
+      </Helmet>
       <div className="contact__container">
         <div className="contact__content">
           <h1 className="contact__heading">Contact us</h1>

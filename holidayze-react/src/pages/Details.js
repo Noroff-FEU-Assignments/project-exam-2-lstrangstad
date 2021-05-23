@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { BASE_URL } from "../utils/constants";
 import TransitionsModal from "../components/Modal";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { Helmet } from "react-helmet";
 
 const Details = () => {
   const [hotel, setHotel] = useState([]);
@@ -21,6 +22,9 @@ const Details = () => {
 
   return (
     <div className="details">
+      <Helmet>
+        <title>Holidaze | Details</title>
+      </Helmet>
       {loader ? (
         <div className="loader">
           <CircularProgress />
@@ -38,7 +42,9 @@ const Details = () => {
             <div>
               <h1 className="details__title">{hotel.name}</h1>
               <p className="details__location">{hotel.location}</p>
-              <div className="details__rating">{hotel.rating}</div>
+              <div className="details__rating">
+                <span className="details__num">{hotel.rating}</span>
+              </div>
             </div>
             <div>
               <p className="details__price">

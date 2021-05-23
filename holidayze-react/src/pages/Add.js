@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import useAxios from "../utils/useAxios";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { addSchema } from "../utils/schemas";
+import { Helmet } from "react-helmet";
 
 const Add = () => {
   const [hotel, setHotel] = useState(null);
@@ -43,6 +44,9 @@ const Add = () => {
 
   return (
     <div className="add">
+      <Helmet>
+        <title>Holidaze | Add Establishment</title>
+      </Helmet>
       <Link className="add__link" to="/admin">
         Back
       </Link>
@@ -52,8 +56,8 @@ const Add = () => {
           {postError && <p>{postError}</p>}
           <fieldset className="add__field" disabled={submit}>
             {success ? (
-              <p className="form__success">
-                Added new accomodation successfully
+              <p className="add__success">
+                Added {hotel.name} to establishments successfully!
               </p>
             ) : null}
             <div className="add__box">
@@ -61,10 +65,12 @@ const Add = () => {
               <input
                 className="add__input"
                 name="name"
-                placeholder="name..."
+                placeholder="Name..."
                 ref={register}
               />
-              {errors.name && <p>{errors.name.message}</p>}
+              {errors.name && (
+                <p className="add__error">{errors.name.message}</p>
+              )}
             </div>
 
             <div className="add__box">
@@ -75,17 +81,21 @@ const Add = () => {
                 placeholder="Description of establishment..."
                 ref={register}
               />
-              {errors.description && <p>{errors.description.message}</p>}
+              {errors.description && (
+                <p className="add__error">{errors.description.message}</p>
+              )}
             </div>
             <div className="add__box">
               <label className="add__label">Price</label>
               <input
                 className="add__input"
                 name="price"
-                placeholder="1999..."
+                placeholder="1999 etc.."
                 ref={register}
               />
-              {errors.price && <p>{errors.price.message}</p>}
+              {errors.price && (
+                <p className="add__error">{errors.price.message}</p>
+              )}
             </div>
             <div className="add__box">
               <label className="add__label">Rating</label>
@@ -95,7 +105,9 @@ const Add = () => {
                 placeholder="Rating (9.5)"
                 ref={register}
               />
-              {errors.rating && <p>{errors.rating.message}</p>}
+              {errors.rating && (
+                <p className="add__error">{errors.rating.message}</p>
+              )}
             </div>
             <div className="add__box">
               <label className="add__label">Image</label>
@@ -105,17 +117,21 @@ const Add = () => {
                 placeholder="Image URL..."
                 ref={register}
               />
-              {errors.image && <p>{errors.image.message}</p>}
+              {errors.image && (
+                <p className="add__error">{errors.image.message}</p>
+              )}
             </div>
             <div className="add__box">
-              <label className="add__label">Address</label>
+              <label className="add__label">Location</label>
               <input
                 className="add__input"
-                name="adress"
-                placeholder="Kong Oscars Gate 33..."
+                name="location"
+                placeholder="City center/Bryggen etc..."
                 ref={register}
               />
-              {errors.adress && <p>{errors.adress.message}</p>}
+              {errors.location && (
+                <p className="add__error">{errors.location.message}</p>
+              )}
             </div>
             <button className="add__button btn" type="submit">
               {submit ? "Adding..." : "Add"}
