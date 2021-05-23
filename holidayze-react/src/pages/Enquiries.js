@@ -53,6 +53,7 @@ const Enquiries = () => {
       </Link>
       <div className="enquiries__search">
         <input
+          className="enquiries__input"
           type="text"
           placeholder="Search Guest..."
           onChange={handleFilter}
