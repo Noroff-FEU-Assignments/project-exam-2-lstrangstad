@@ -26,7 +26,7 @@ const Stays = () => {
   }, []);
 
   const options = [
-    { label: "All Stays", value: "all" },
+    { label: "All", value: "all" },
     { label: "Hotels", value: "hotel" },
     { label: "Cabins", value: "cabin" },
     { label: "B&Bs", value: "b&b" },
