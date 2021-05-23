@@ -6,11 +6,11 @@ const Navbar = styled.nav`
   display: flex;
   width: 100%;
   height: 55px;
-  border-bottom: 2px solid #d54808;
+  border-bottom: 2px solid #e63946;
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
-  background-color: #13225d;
+  background-color: #1d3557;
   @media (min-width: 768px) {
     padding: 0 40px;
   }
@@ -21,7 +21,7 @@ const Navbar = styled.nav`
       text-decoration: none;
       font-size: 20px;
       .logo-span {
-        color: #d54808;
+        color: #e63946;
       }
     }
   }

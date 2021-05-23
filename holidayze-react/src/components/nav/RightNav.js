@@ -12,7 +12,7 @@ const Ul = styled.ul`
   }
 
   .link:hover {
-    border-bottom: 2px solid #d54808;
+    border-bottom: 2px solid #e63946;
   }
 
   .link {
@@ -29,12 +29,12 @@ const Ul = styled.ul`
   }
 
   .active {
-    border-bottom: 2px solid #d54808;
+    border-bottom: 2px solid #e63946;
   }
 
   @media (max-width: 768px) {
     flex-flow: column nowrap;
-    background-color: #13225d;
+    background-color: #f8f9fa;
     position: fixed;
     transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
     top: 0;
@@ -43,7 +43,8 @@ const Ul = styled.ul`
     width: 300px;
     padding-top: 3.5rem;
     transition: transform 0.3s ease-in-out;
-    li {
+    .link {
+      color: black;
     }
   }
 `;
