@@ -39,23 +39,44 @@ const FetchLastEnquiry = () => {
             return (
               <div className="enquiry__content" key={enquiry.id}>
                 <p className="enquiry__output">
-                  Sent:{" "}
+                  <span className="enquiry__label">Sent: </span>
                   {new Date(enquiry.created_at).toString().substring(0, 24)}
                 </p>
-                <p className="enquiry__output">Hotel: {enquiry.hotel_name}</p>
-                <p className="enquiry__output">Name: {enquiry.name}</p>
                 <p className="enquiry__output">
-                  Check-in date:{" "}
+                  <span className="enquiry__label">Hotel: </span>{" "}
+                  {enquiry.hotel_name}
+                </p>
+                <p className="enquiry__output">
+                  <span className="enquiry__label">Name: </span> {enquiry.name}
+                </p>
+                <p className="enquiry__output">
+                  <span className="enquiry__label">Check-in date: </span>
                   {new Date(enquiry.date).toString().substring(0, 15)}
                 </p>
                 <p className="enquiry__output">
-                  Check-out date: {new Date(nights).toString().substring(0, 15)}
+                  <span className="enquiry__label">Check-out date: </span>{" "}
+                  {new Date(nights).toString().substring(0, 15)}
                 </p>
-                <p className="enquiry__output">nights: {enquiry.nights}</p>
-                <p className="enquiry__output">Adults: {enquiry.adults}</p>
-                <p className="enquiry__output">Children: {enquiry.children}</p>
-                <p className="enquiry__output">Price: {enquiry.price}kr</p>
-                <p className="enquiry__total">SubTotal: {priceTotal}kr</p>
+                <p className="enquiry__output">
+                  <span className="enquiry__label">Nights: </span>{" "}
+                  {enquiry.nights}
+                </p>
+                <p className="enquiry__output">
+                  <span className="enquiry__label">Adults: </span>{" "}
+                  {enquiry.adults}
+                </p>
+                <p className="enquiry__output">
+                  <span className="enquiry__label">Children: </span>{" "}
+                  {enquiry.children}
+                </p>
+                <p className="enquiry__output">
+                  <span className="enquiry__label">Price: </span>{" "}
+                  {enquiry.price}kr
+                </p>
+                <p className="enquiry__total">
+                  <span className="enquiry__label">Total to pay: </span>{" "}
+                  {priceTotal}kr
+                </p>
               </div>
             );
           })}

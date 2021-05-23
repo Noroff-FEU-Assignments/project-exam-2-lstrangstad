@@ -34,12 +34,23 @@ const FetchLastMessage = () => {
             return (
               <div key={msg.id}>
                 <p className="message__output">
-                  Sent: {new Date(msg.created_at).toString().substring(0, 24)}
+                  <span className="message__label">Sent: </span>{" "}
+                  {new Date(msg.created_at).toString().substring(0, 24)}
                 </p>
-                <p className="message__output">Name: {msg.name}</p>
-                <p className="message__output">Email: {msg.email}</p>
-                <p className="message__output">Subject: {msg.subject}</p>
-                <p className="message__output">Message: {msg.message}</p>
+                <p className="message__output">
+                  <span className="message__label">Name: </span> {msg.name}
+                </p>
+                <p className="message__output">
+                  <span className="message__label">Email: </span> {msg.email}
+                </p>
+                <p className="message__output">
+                  <span className="message__label">Subject: </span>{" "}
+                  {msg.subject}
+                </p>
+                <p className="message__output">
+                  <span className="message__label">Message: </span>
+                  {msg.message}
+                </p>
               </div>
             );
           })}
