@@ -24,6 +24,10 @@ const Details = () => {
     <div className="details">
       <Helmet>
         <title>Holidaze | Details</title>
+        <meta
+          name="description"
+          content="More details about our establishments. Where it's located and a overview description"
+        />
       </Helmet>
       {loader ? (
         <div className="loader">

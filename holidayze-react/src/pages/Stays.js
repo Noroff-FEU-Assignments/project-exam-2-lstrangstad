@@ -48,6 +48,10 @@ const Stays = () => {
     <div className="stays">
       <Helmet>
         <title>Holidaze | Stays</title>
+        <meta
+          name="description"
+          content="Find your accommadation now, we have many from Hotels, cabins and B&B's"
+        />
       </Helmet>
       <h1 className="stays__header">Our hotels</h1>
       <SelectType

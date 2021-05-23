@@ -34,6 +34,10 @@ const Contact = () => {
     <div className="contact">
       <Helmet>
         <title>Holidaze | Contact</title>
+        <meta
+          name="description"
+          content="If you want or need to send us a message. All your feedback are very welcome"
+        />
       </Helmet>
       <div className="contact__container">
         <div className="contact__content">
