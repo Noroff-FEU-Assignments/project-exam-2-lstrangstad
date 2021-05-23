@@ -96,7 +96,7 @@ export default function TransitionsModal(props) {
         <Fade in={open}>
           <div className={classes.paper}>
             <div className="modal">
-              <h2 className="modal__header">Book now</h2>
+              <h2 className="modal__header">Book now at {props.name}</h2>
               <form className="modal__form" onSubmit={handleSubmit}>
                 {postError && <p className="add__error error">{postError}</p>}
                 {success ? (
