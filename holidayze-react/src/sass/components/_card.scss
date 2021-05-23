@@ -1,5 +1,4 @@
 .card {
-  margin: 20px 0;
   overflow: hidden;
   border-radius: 5px;
   height: 100%;
@@ -28,7 +27,7 @@
   }
 
   &__content {
-    padding: 20px 0;
+    padding-top: 20px;
   }
 
   &__name {
@@ -54,13 +53,13 @@
   &__rating {
     background-color: blue;
     color: white;
-    display: inline-block;
     height: 25px;
     width: 25px;
     border-radius: 5px;
     font-size: 12px;
     font-weight: bold;
     text-align: center;
+    border: none;
   }
 
   &__number {
@@ -70,13 +69,6 @@
 
 @media (min-width: 768px) {
   .card {
-    margin: 20px 0;
-    overflow: hidden;
-
-    &__content {
-      padding: 20px 0;
-    }
-
     &__location {
       margin-bottom: 10px;
     }
