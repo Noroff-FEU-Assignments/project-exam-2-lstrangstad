@@ -18,14 +18,18 @@ const Ul = styled.ul`
   .link {
     text-decoration: none;
     color: #fff;
+    font-family: "montserrat";
+    font-weight: bold;
   }
 
   button {
     border: none;
     background: transparent;
-    color: red;
+    color: #e63946;
     font-size: 16px;
     cursor: pointer;
+    font-family: "montserrat";
+    font-weight: bold;
   }
 
   .active {

@@ -20,6 +20,8 @@ const Navbar = styled.nav`
       color: white;
       text-decoration: none;
       font-size: 20px;
+      font-family: "montserrat";
+      font-weight: bold;
       .logo-span {
         color: #e63946;
       }
