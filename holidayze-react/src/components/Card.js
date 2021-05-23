@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Card = (props) => {
-  const { name, image, location, price, rating, id } = props;
+  const { name, image, location, price, rating, id, type } = props;
 
   return (
     <div className="card">
