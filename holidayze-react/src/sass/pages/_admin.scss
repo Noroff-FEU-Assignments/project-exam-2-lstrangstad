@@ -30,6 +30,11 @@
   &__heading {
     font-size: 20px;
     padding: 0 5px;
+    font-weight: bold;
+  }
+
+  &__label {
+    font-weight: bold;
   }
 
   &__output {
@@ -49,10 +54,15 @@
   &__heading {
     font-size: 20px;
     padding: 0 5px;
+    font-weight: bold;
   }
 
   &__output {
     padding: 5px 0;
+  }
+
+  &__label {
+    font-weight: bold;
   }
 }
 
@@ -64,5 +74,9 @@
       max-width: 900px;
       margin: 0 auto;
     }
+  }
+
+  .enquiry {
+    margin-bottom: 20px;
   }
 }

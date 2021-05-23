@@ -9,10 +9,21 @@
     text-decoration: none;
   }
 
+  &__search {
+    max-width: 300px;
+    margin-top: 20px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 5px;
+  }
+
   &__container {
     margin-top: 20px;
     font-size: 14px;
     max-width: 300px;
+    color: black;
 
     div {
       display: flex;
@@ -43,14 +54,19 @@
     padding: 40px;
     min-height: 87vh;
 
+    &__search {
+      margin-top: 40px;
+    }
+
     &__container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-      background-color: rgb(219, 219, 219);
+      background-color: #e2e8eb;
       padding: 10px;
       border-radius: 5px;
       max-width: none;
       align-items: center;
+      margin-top: 40px;
 
       div {
         margin: 0 10px;
@@ -65,7 +81,7 @@
     &__btn {
       width: 60px;
       height: 40px;
-      font-size: 10px;
+      font-size: 12px;
       cursor: pointer;
     }
   }
