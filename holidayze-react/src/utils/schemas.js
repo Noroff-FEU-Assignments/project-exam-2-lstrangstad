@@ -16,14 +16,14 @@ export const bookingSchema = yup.object().shape({
 });
 
 export const addSchema = yup.object().shape({
-  name: yup.string().required("Please enter name of accomodation"),
+  name: yup.string().required("Please enter name of establishment"),
   description: yup
     .string()
-    .required("Please enter description of accomodation"),
-  price: yup.number().required("Please enter price of accomodation"),
-  image: yup.string().required("Please enter img of accomodation"),
-  adress: yup.string().required("Please enter address of accomodation"),
-  rating: yup.string().required("Please enter rating of accomodation"),
+    .required("Please enter description of establishment"),
+  price: yup.number().required("Please enter price of establishment"),
+  image: yup.string().required("Please enter image URL of establishment"),
+  location: yup.string().required("Please enter location of establishment"),
+  rating: yup.string().required("Please enter rating of establishment"),
 });
 
 export const contactSchema = yup.object().shape({
